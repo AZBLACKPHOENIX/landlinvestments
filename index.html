@@ -560,7 +560,7 @@
         const amountSlider = document.getElementById('amountSlider');
         const amountDisplay = document.getElementById('amountDisplay');
         const monthlyResult = document.getElementById('monthlyResult');
-        function updateCalc() { let amt = parseInt(amountSlider.value); amountDisplay.innerText = 'R ' + amt.toLocaleString(); monthlyResult.innerText = 'R ' + Math.round(amt * 1.15).toLocaleString(); }
+        function updateCalc() { let amt = parseInt(amountSlider.value); amountDisplay.innerText = 'R ' + amt.toLocaleString(); monthlyResult.innerText = 'R ' + Math.round(amt * 5).toLocaleString(); }
         amountSlider.addEventListener('input', updateCalc); updateCalc();
 
         const menuToggle = document.getElementById('menuToggle');
