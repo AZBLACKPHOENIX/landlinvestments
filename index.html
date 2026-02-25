@@ -96,16 +96,16 @@
             50% { filter: drop-shadow(0 0 50px rgba(255, 255, 0, 0.7)); }
         }
         #loader-wrapper {
-            animation: ambientLight 3s infinite ease-in-out;
+            animation: ambientLight 5s infinite ease-in-out;
         }
         .bulb-glass {
-            animation: bulbColor 3s infinite ease-in-out;
+            animation: bulbColor 5s infinite ease-in-out;
         }
         .bulb-svg {
-            animation: outerGlow 3s infinite ease-in-out;
+            animation: outerGlow 5s infinite ease-in-out;
         }
         .filament {
-            animation: filamentGlow 3s infinite ease-in-out;
+            animation: filamentGlow 5s infinite ease-in-out;
         }
         .loaded #loader-wrapper {
             opacity: 0;
@@ -365,7 +365,7 @@
                 </div>
                 <!-- Card 2: Investment Summit 30 Sept -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col">
-                    <div class="h-40 bg-gray-200"><img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&q=60&w=600" alt="summit" class="w-full h-full object-cover"></div>
+                    <div class="h-40 bg-gray-200"><img src="summit.jpg" alt="summit" class="w-full h-full object-cover"></div>
                     <div class="p-5 text-gray-900 flex-1">
                         <h4 class="font-extrabold text-base">investment summit 2023</h4>
                         <p class="text-gray-600 text-xs my-2 leading-relaxed">
@@ -560,7 +560,7 @@
         const amountSlider = document.getElementById('amountSlider');
         const amountDisplay = document.getElementById('amountDisplay');
         const monthlyResult = document.getElementById('monthlyResult');
-        function updateCalc() { let amt = parseInt(amountSlider.value); amountDisplay.innerText = 'R ' + amt.toLocaleString(); monthlyResult.innerText = 'R ' + Math.round(amt * 5%).toLocaleString(); }
+        function updateCalc() { let amt = parseInt(amountSlider.value); amountDisplay.innerText = 'R ' + amt.toLocaleString(); monthlyResult.innerText = 'R ' + Math.round(amt * 0,05).toLocaleString(); }
         amountSlider.addEventListener('input', updateCalc); updateCalc();
 
         const menuToggle = document.getElementById('menuToggle');
