@@ -3,653 +3,575 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L&L Investments and Loans | Financial Integrity</title>
-    <!-- Font Awesome for Professional Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>L&L Investments · clear, fair, local</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz@0,14..32;1,14..32&display=swap" rel="stylesheet">
     <style>
-        /* === STYLES (unchanged, kept intact) === */
-        :root{
-            --primary-red:#D32F2F;
-            --accent-yellow:#FFD700;
-            --bg-light:#ffffff;
-            --text-dark:#212121;
-            --text-muted:#666666;
-            --white:#ffffff;
-            --card-bg:#f9f9f9;
-            --footer-dark:#1a1a1a;
-            --shadow:0 4px 15px rgba(0,0,0,0.1);
-            --transition:all 0.3s ease;
+        * { font-family: 'Inter', system-ui, sans-serif; scroll-margin-top: 80px; }
+        .hero-gradient { background: linear-gradient(145deg, #ffffff 0%, #fff3f0 100%); }
+        .btn-primary { background-color: #b91c1c; box-shadow: 0 8px 18px rgba(185, 28, 28, 0.15); transition: all 0.2s ease; }
+        .btn-primary:hover { background-color: #991b1b; transform: translateY(-2px); box-shadow: 0 12px 24px rgba(185, 28, 28, 0.25); }
+        .card-soft { box-shadow: 0 12px 30px rgba(0,0,0,0.03); border: 1px solid #f1f1f1; }
+        .step-line { position: absolute; top: 2.5rem; left: 20%; right: 20%; height: 2px; background: #fecaca; z-index: 0; }
+        .timeline-line { position: absolute; left: 1.25rem; top: 0; bottom: 0; width: 2px; background: #fecaca; }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        input[type=range] { accent-color: #b91c1c; }
+        .navbar-fixed { position: fixed; top: 0; left: 0; width: 100%; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #f1f1f1; }
+        body { padding-top: 72px; }
+        /* improved logo sizing */
+        .logo-container { 
+            width: 25%; 
+            max-width: 140px; 
+            flex-shrink: 0; 
         }
-        html {
-            scroll-behavior: smooth;
+        .logo-container img { 
+            width: 100%; 
+            height: auto; 
+            max-height: 3rem; 
+            object-fit: contain; 
         }
-        *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-        body{background:var(--bg-light);color:var(--text-dark);line-height:1.6; overflow-x: hidden;}
-        .container{max-width:1200px;margin:0 auto;padding:0 20px;}
-        section{padding:80px 0;}
-        .section-title{text-align:center;margin-bottom:50px;color:var(--primary-red);font-size:2.5rem;text-transform: uppercase;}
-        .section-title::after{content:'';display:block;width:80px;height:4px;background:var(--accent-yellow);margin:10px auto;}
-        .btn{background:var(--accent-yellow);color:var(--text-dark);padding:15px 35px;border:none;border-radius:5px;font-weight:bold;cursor:pointer;transition:var(--transition);text-decoration: none;display: inline-block;}
-        .btn:hover{background:#e5c100;transform:translateY(-3px);box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
-        .btn-red {background: var(--primary-red); color: white;}
-        /* NAV */
-        header{background:var(--primary-red);padding:15px 0;position:sticky;top:0;z-index:1000;box-shadow: 0 2px 10px rgba(0,0,0,0.2);}
-        nav{display:flex;justify-content:space-between;align-items:center;}
-        .logo{color:white;font-weight:bold;font-size:1.8rem; letter-spacing: 1px;}
-        .logo span{color:var(--accent-yellow);}
-        .nav-links{display:flex;list-style:none;gap:25px;}
-        .nav-links a{color:white;text-decoration:none;font-weight: 500;transition: var(--transition);}
-        .nav-links a:hover{color: var(--accent-yellow);}
-        .hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px;}
-        .hamburger span{width:25px;height:3px;background:white;}
-        @media(max-width:768px){
-            .nav-links{position:fixed;right:-100%;top:60px;background:var(--primary-red);flex-direction:column;width:70%;height:100vh;padding-top:50px;transition:.3s;text-align: center;}
-            .nav-links.active{right:0;}
-            .hamburger{display:flex;}
+        @media (min-width: 768px) { 
+            .logo-container { 
+                width: 20%; 
+                max-width: 180px; 
+            } 
         }
-        /* HERO */
-        .hero{
-            background:linear-gradient(rgba(180, 0, 0, 0.7),rgba(0, 0, 0, 0.6)),
-            url('https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&q=80');
-            background-size:cover;
-            background-position: center;
-            height:90vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            color:white;
-            text-align:center;
-            padding: 20px;
-        }
-        .hero h1{font-size:3.5rem;margin-bottom:15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);}
-        .hero p{margin-bottom:30px;font-size: 1.2rem; max-width: 700px;}
-        /* SERVICES & PLANS */
-        .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
-        .service-card{background:var(--card-bg);padding:40px 30px;border-radius:10px;box-shadow:var(--shadow);text-align:center;transition: var(--transition); border-top: none;}
-        .service-card:hover{transform:translateY(-10px); background: white;}
-        .service-card i {font-size: 2.5rem; color: var(--primary-red); margin-bottom: 20px;}
-        .service-card h3{color: var(--primary-red); margin-bottom: 15px;}
-        .price-tag{font-size: 1.5rem; font-weight: bold; color: var(--text-dark); margin: 10px 0;}
-        /* ABOUT SECTION */
-        .about-content{display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;}
-        .about-text h3{color: var(--primary-red); margin-bottom: 15px;}
-        /* CALCULATORS */
-        .calculators-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:40px;margin-bottom:40px;}
-        .calculator-container{background:white;padding:40px;border-radius:15px;box-shadow:var(--shadow);border: 1px solid #eee;}
-        .calc-group{margin-bottom:20px;}
-        .calc-group label{font-weight:bold;color:var(--primary-red); display: block; margin-bottom: 10px;}
-        input[type=range]{width:100%; accent-color: var(--primary-red);}
-        .calc-result{background:#fff9e6;padding:30px;border-left:8px solid var(--accent-yellow);text-align:center;border-radius:10px;}
-        .calc-result h3{font-size: 2rem; color: var(--primary-red); margin: 10px 0;}
-        /* CONTACT */
-        .contact-wrapper{display: grid; grid-template-columns: 1fr 1fr; gap: 30px;}
-        .contact-info-box{background: var(--primary-red); color: white; padding: 40px; border-radius: 10px;}
-        .contact-info-box h3{color: var(--accent-yellow); margin-bottom: 20px;}
-        .contact-item {display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px;}
-        .contact-item i {font-size: 1.2rem; color: var(--accent-yellow); margin-top: 5px;}
-        .contact-form input, .contact-form textarea{width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px;}
-        /* FOOTER */
-        footer{background:var(--footer-dark); color:var(--white); padding: 80px 0 20px;}
-        .footer-grid {display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 60px;}
-        .footer-logo {font-size: 1.5rem; font-weight: bold; margin-bottom: 20px;}
-        .footer-logo span {color: var(--accent-yellow);}
-        .footer-about p {color: #aaa; font-size: 0.9rem; margin-bottom: 20px;}
-        .footer-title {font-size: 1.1rem; color: var(--accent-yellow); margin-bottom: 25px; position: relative; padding-bottom: 10px;}
-        .footer-links {list-style: none;}
-        .footer-links li {margin-bottom: 12px;}
-        .footer-links a {color: #aaa; text-decoration: none; transition: var(--transition); font-size: 0.9rem;}
-        .footer-links a:hover {color: var(--white); padding-left: 5px;}
-        .footer-contact-item {display: flex; align-items: center; gap: 12px; margin-bottom: 15px; color: #aaa; font-size: 0.9rem;}
-        .footer-contact-item i {color: var(--accent-yellow);}
-        .social-links {display: flex; gap: 15px; margin-top: 20px;}
-        .social-links a {width: 35px; height: 35px; background: #333; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white; text-decoration: none; transition: var(--transition);}
-        .social-links a:hover {background: var(--primary-red); transform: translateY(-3px);}
-        .footer-bottom {border-top: 1px solid #333; padding-top: 20px; text-align: center; font-size: 0.85rem; color: #777;}
-        /* CHATBOT */
-        #chatbot-trigger{
-            position:fixed; bottom:30px; right:30px;
-            background:var(--primary-red); width:60px; height:60px;
-            border-radius:50%; display:flex; align-items:center; justify-content:center;
-            color:white; font-size:1.5rem; cursor:pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1001;
-        }
-        #chat-window{
-            position:fixed; bottom:100px; right:30px;
-            width:350px; height:450px;
-            background:white; border-radius:15px;
-            display:none; flex-direction:column;
-            box-shadow:0 10px 30px rgba(0,0,0,0.2);
-            overflow: hidden; border: 1px solid #ddd; z-index: 1001;
-        }
-        .chat-header{background:var(--primary-red); color:white; padding:15px; font-weight:bold; display: flex; justify-content: space-between;}
-        .chat-messages{flex:1; padding:15px; overflow-y:auto; background:#f9f9f9;}
-        .message{margin-bottom:10px; padding:10px 15px; border-radius:15px; max-width:80%; font-size: 0.85rem;}
-        .bot-msg{background:#eee;}
-        .user-msg{background:var(--primary-red); color:white; margin-left:auto;}
-        .chat-input{display:flex; padding:10px; border-top:1px solid #ddd; background: white;}
-        .chat-input input{flex:1; padding:8px; border-radius:20px; border:1px solid #ddd; outline: none;}
+        /* reduced section spacing */
+        .section-padding { padding-top: 4rem; padding-bottom: 4rem; }
+        @media (min-width: 768px) { .section-padding { padding-top: 5rem; padding-bottom: 5rem; } }
 
-        @media(max-width:992px){
-            .footer-grid {grid-template-columns: 1fr 1fr; gap: 30px;}
-        }
-        @media(max-width:768px){
-            .about-content, .contact-wrapper, .footer-grid, .calculators-grid {grid-template-columns: 1fr;}
-            .hero h1{font-size: 2.2rem;}
-        }
-
-        /* Investment options inside calculator */
-        .investment-options {
+        /* ===== BULB LOADER ===== */
+        #loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin: 20px 0;
-            padding: 10px;
-            background: #fafafa;
-            border-radius: 8px;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s;
         }
-        .investment-options label {
+        .bulb-container {
+            transform: rotate(90deg);
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: normal;
-            color: var(--text-dark);
-            cursor: pointer;
+            justify-content: center;
         }
-        .investment-options input[type="radio"] {
-            accent-color: var(--primary-red);
-            width: auto;
-            margin-right: 5px;
+        .bulb-svg {
+            width: clamp(150px, 40vw, 250px);
+            height: auto;
+            transition: filter 1s ease-in-out;
+        }
+        .bulb-glass {
+            stroke: #222;
+            stroke-width: 6;
+            transition: fill 1s ease-in-out;
+        }
+        .filament {
+            fill: none;
+            stroke: #333;
+            stroke-width: 5;
+            stroke-linecap: round;
+            transition: stroke 1s ease-in-out;
+        }
+        /* animations */
+        @keyframes ambientLight {
+            0%, 100% { background-color: #0a0a0a; }
+            50% { background-color: #1a1a05; }
+        }
+        @keyframes bulbColor {
+            0%, 100% { fill: #222; }
+            50% { fill: #FFFF00; }
+        }
+        @keyframes filamentGlow {
+            0%, 100% { stroke: #333; }
+            50% { stroke: #000; }
+        }
+        @keyframes outerGlow {
+            0%, 100% { filter: drop-shadow(0 0 0px transparent); }
+            50% { filter: drop-shadow(0 0 50px rgba(255, 255, 0, 0.7)); }
+        }
+        #loader-wrapper {
+            animation: ambientLight 3s infinite ease-in-out;
+        }
+        .bulb-glass {
+            animation: bulbColor 3s infinite ease-in-out;
+        }
+        .bulb-svg {
+            animation: outerGlow 3s infinite ease-in-out;
+        }
+        .filament {
+            animation: filamentGlow 3s infinite ease-in-out;
+        }
+        .loaded #loader-wrapper {
+            opacity: 0;
+            visibility: hidden;
         }
     </style>
 </head>
-<body>
+<body class="bg-white text-gray-800 antialiased" id="body">
 
-<header>
-    <div class="container">
-        <nav>
-            <div class="logo">L&L <span>Investments</span></div>
-            <div class="hamburger" id="hamburger"><i class="fa-solid fa-bars" style="color: white; font-size: 1.5rem;"></i></div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#loan">Loan</a></li>
-                <li><a href="#debt">Debt Recovery</a></li>
-                <li><a href="#investment">Investment</a></li>
-                <li><a href="#funeral">Funeral Cover</a></li>
-                <li><a href="#calculators">Financial Tools</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-
-<section class="hero" id="hero">
-    <h1>Don't be broke while L&L is here to give you a loan.</h1>
-    <p>Empowering your financial journey with integrity and transparency. We offer tailor-made solutions to ensure your peace of mind.</p>
-    <a href="loan-form.html" class="btn">Apply for a Loan</a>
-</section>
-
-<section id="about">
-    <div class="container">
-        <h2 class="section-title">About Our Mission</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Leading with Financial Integrity</h3>
-                <p>Founded on the principles of trust and growth, L&L Investments and Loans has grown to be a beacon of hope for those seeking financial assistance. We specialize in micro-lending, funeral covers, debt recovery, and investment plans.</p>
-                <br>
-                <p>Our goal is to ensure that every South African has access to fair interest rates and the financial tools necessary to build a sustainable future. We believe in <strong>Responsible Lending</strong>—helping you grow, not putting you in a cycle of debt.</p>
-            </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&q=80" alt="Consultation" style="width:100%; border-radius:10px; box-shadow: var(--shadow);">
-            </div>
+    <!-- BULB LOADER -->
+    <div id="loader-wrapper">
+        <div class="bulb-container">
+            <svg class="bulb-svg" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                <path class="bulb-glass" d="M 120,20 C 60,20 20,40 20,75 C 20,110 60,130 120,130 L 140,120 L 140,110 L 160,105 C 170,105 175,95 175,75 C 175,55 170,45 160,45 L 140,40 L 140,30 Z" />
+                <path class="filament" d="M 45,70 C 65,40 100,75 160,70" />
+                <path class="filament" d="M 45,80 C 65,110 100,75 160,80" />
+            </svg>
         </div>
     </div>
-</section>
 
-<!-- LOAN SECTION (updated with image details) -->
-<section id="loan" style="background: #ffffff;">
-    <div class="container">
-        <h2 class="section-title">Personal Loans</h2>
-        <div class="services-grid" style="grid-template-columns: 1fr;">
-            <div class="service-card" style="max-width: 700px; margin: 0 auto;">
-                <i class="fa-solid fa-hand-hold-dollar"></i>
-                <h3>Fast & Fair Micro-Loans</h3>
-                <p class="price-tag">From R1 000 to R5 000 | 1 month to pay</p>
-                <div style="text-align: left; margin: 20px 0; padding: 15px; background: #fff0e0; border-radius: 8px;">
-                    <p style="font-weight:bold; color:var(--primary-red);"><i class="fa-solid fa-check-circle"></i> Just bring:</p>
-                    <ul style="list-style:none; margin-top:10px;">
-                        <li><i class="fa-solid fa-check" style="color:var(--primary-red);"></i> 3 months bank statement</li>
-                        <li><i class="fa-solid fa-check" style="color:var(--primary-red);"></i> Bank card</li>
-                        <li><i class="fa-solid fa-check" style="color:var(--primary-red);"></i> Payslip</li>
-                    </ul>
-                    <p style="margin-top:15px;"><i class="fa-solid fa-calendar-alt"></i> <strong>Effective from 1 April 2024</strong></p>
-                </div>
-                <p>Need a little extra? We also offer loans up to R50,000 with flexible terms. Ask our chatbot for details.</p>
-                <a href="loan-form.html" class="btn btn-red">Apply for Loan</a>
+    <!-- ===== FIXED NAVBAR ===== -->
+    <nav class="navbar-fixed">
+        <div class="max-w-7xl mx-auto px-5 md:px-6 py-3 flex justify-between items-center">
+            <a href="#" class="logo-container">
+                <img src="logo.jpeg" alt="L&L Investments">
+            </a>
+            <div class="hidden md:flex items-center space-x-4 lg:space-x-6 text-sm font-medium">
+                <a href="#how-it-works" class="text-gray-700 hover:text-red-700 transition whitespace-nowrap">How it works</a>
+                <a href="#why-us" class="text-gray-700 hover:text-red-700 transition whitespace-nowrap">Why us</a>
+                <a href="#csi" class="text-gray-700 hover:text-red-700 transition whitespace-nowrap">CSI</a>
+                <a href="#investment" class="text-gray-700 hover:text-red-700 transition whitespace-nowrap">Investment</a>
+                <a href="#funeral" class="text-gray-700 hover:text-red-700 transition whitespace-nowrap">Funeral</a>
+                <a href="#debt" class="text-gray-700 hover:text-red-700 transition whitespace-nowrap">Debt collection</a>
+                <a href="#news" class="text-gray-700 hover:text-red-700 transition whitespace-nowrap">News</a>
+                <a href="#faq" class="text-gray-700 hover:text-red-700 transition whitespace-nowrap">FAQ</a>
+                <a href="#contact" class="text-gray-700 hover:text-red-700 transition whitespace-nowrap">Contact</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="#calculator" class="hidden md:inline-block bg-red-700 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-red-800 transition shadow-sm whitespace-nowrap">Apply now</a>
+                <button id="menuToggle" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full text-gray-700 hover:bg-red-50 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- DEBT RECOVERY SECTION -->
-<section id="debt">
-    <div class="container">
-        <h2 class="section-title">Debt Recovery Solutions</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fa-solid fa-magnifying-glass-chart"></i>
-                <h3>Step 1: Assessment</h3>
-                <p>We analyze the debtor's profile and evaluate the legal standing of the debt to ensure a high recovery probability.</p>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-handshake-simple"></i>
-                <h3>Step 2: Negotiation</h3>
-                <p>Professional mediation to settle debts without lengthy court battles, preserving business relationships.</p>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-money-bill-trend-up"></i>
-                <h3>Step 3: Recovery</h3>
-                <p>Swift collection processes and legal action where necessary to return your liquidity as quickly as possible.</p>
+        <!-- mobile menu (all links appear) -->
+        <div id="mobileMenu" class="md:hidden overflow-hidden transition-all duration-300 max-h-0 opacity-0 bg-white/95 border-t border-gray-100">
+            <div class="px-6 py-4 space-y-4 text-base font-medium">
+                <a href="#how-it-works" class="block py-2 text-gray-800 hover:text-red-700">How it works</a>
+                <a href="#why-us" class="block py-2 text-gray-800 hover:text-red-700">Why us</a>
+                <a href="#csi" class="block py-2 text-gray-800 hover:text-red-700">CSI</a>
+                <a href="#investment" class="block py-2 text-gray-800 hover:text-red-700">Investment</a>
+                <a href="#funeral" class="block py-2 text-gray-800 hover:text-red-700">Funeral</a>
+                <a href="#debt" class="block py-2 text-gray-800 hover:text-red-700">Debt collection</a>
+                <a href="#news" class="block py-2 text-gray-800 hover:text-red-700">News</a>
+                <a href="#faq" class="block py-2 text-gray-800 hover:text-red-700">FAQ</a>
+                <a href="#contact" class="block py-2 text-gray-800 hover:text-red-700">Contact</a>
+                <a href="#calculator" class="block w-full text-center bg-red-700 text-white py-3 rounded-full font-bold mt-4">Apply now</a>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="debt-form.html" class="btn">Request Recovery Services</a>
-        </div>
-    </div>
-</section>
+    </nav>
 
-<!-- INVESTMENT SECTION -->
-<section id="investment" style="background: #f9f9f9;">
-    <div class="container">
-        <h2 class="section-title">Investment Plans</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fa-solid fa-piggy-bank"></i>
-                <h3>Capital Preservation</h3>
-                <p class="price-tag">No interest</p>
-                <p>Your capital stays 100% intact. Ideal for short-term safeguarding.</p>
-                <a href="investment-form.html" class="btn btn-red" style="margin-top:15px;">Choose Plan</a>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-chart-simple"></i>
-                <h3>Monthly Growth</h3>
-                <p class="price-tag">4% per month</p>
-                <p>Compound interest paid monthly. High returns for active investors.</p>
-                <a href="investment-form.html" class="btn btn-red" style="margin-top:15px;">Choose Plan</a>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-calendar-plus"></i>
-                <h3>Annual Yield</h3>
-                <p class="price-tag">7.5% per annum</p>
-                <p>Steady, reliable growth compounded monthly. Great for long-term goals.</p>
-                <a href="investment-form.html" class="btn btn-red" style="margin-top:15px;">Choose Plan</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FUNERAL COVER SECTION -->
-<section id="funeral" style="background: #fff9e6;">
-    <div class="container">
-        <h2 class="section-title">Funeral Cover Plans</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fa-solid fa-person"></i>
-                <h3>Basic Plan</h3>
-                <p class="price-tag">From R75/pm</p>
-                <ul style="list-style:none; margin: 15px 0; font-size: 0.9rem; color: var(--text-muted);">
-                    <li>R10,000 Cover Amount</li>
-                    <li>Single Member Only</li>
-                    <li>24-hour Claim Processing</li>
-                </ul>
-                <a href="funeral-form.html" class="btn btn-red">Select Plan</a>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-people-group"></i>
-                <h3>Family Plan</h3>
-                <p class="price-tag">From R150/pm</p>
-                <ul style="list-style:none; margin: 15px 0; font-size: 0.9rem; color: var(--text-muted);">
-                    <li>R25,000 Cover Amount</li>
-                    <li>Main Member + 5 Dependents</li>
-                    <li>Airtime & Grocery Benefit</li>
-                </ul>
-                <a href="funeral-form.html" class="btn btn-red">Select Plan</a>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-crown"></i>
-                <h3>Premium Plan</h3>
-                <p class="price-tag">From R280/pm</p>
-                <ul style="list-style:none; margin: 15px 0; font-size: 0.9rem; color: var(--text-muted);">
-                    <li>R50,000 Cover Amount</li>
-                    <li>Main Member + 9 Dependents</li>
-                    <li>Catering & Tombstone Benefit</li>
-                </ul>
-                <a href="funeral-form.html" class="btn btn-red">Select Plan</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FINANCIAL TOOLS (calculators) -->
-<section id="calculators" style="background:#f4f4f4;">
-    <div class="container">
-        <h2 class="section-title">Financial Tools</h2>
-        <div class="calculators-grid">
-            <!-- Loan Calculator -->
-            <div class="calculator-container">
-                <h3 style="color:var(--primary-red); margin-bottom: 25px; text-align:center;">Loan Calculator</h3>
-                <div class="calc-group">
-                    <label><i class="fa-solid fa-coins"></i> Loan Amount: R<span id="loanAmountVal">5000</span></label>
-                    <input type="range" id="loanAmount" min="500" max="50000" step="500" value="5000">
-                </div>
-                <div class="calc-group">
-                    <label><i class="fa-solid fa-calendar-days"></i> Repayment Term: <span id="loanTermVal">6</span> Months</label>
-                    <input type="range" id="loanTerm" min="1" max="24" value="6">
-                </div>
-                <div class="calc-result">
-                    <p>Estimated Monthly Repayment</p>
-                    <h3 id="loanResult">R0.00</h3>
-                    <p style="font-size: 0.8rem; color: #666; margin-bottom: 20px;">*Interest rate: 10% fixed.</p>
-                    <a href="loan-form.html" class="btn" style="width:100%">Apply Now</a>
+    <!-- ===== HERO + CALCULATOR ===== -->
+    <header id="calculator" class="hero-gradient pt-10 pb-16 px-5">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-5">
+                <span class="inline-block px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-bold tracking-wide">MICRO-LENDER · NCR COMPLIANT</span>
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">Need a loan?<br><span class="text-red-700">We keep it simple.</span></h1>
+                <p class="text-lg text-gray-600 max-w-lg">From <span class="font-semibold text-gray-900">R1,000 to R5,000</span> – one monthly repayment, no surprises.</p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <div class="flex items-center space-x-2 text-sm font-medium text-gray-700">
+                        <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span>Transparent terms</span>
+                    </div>
+                    <div class="flex items-center space-x-2 text-sm font-medium text-gray-700">
+                        <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span>No hidden fees</span>
+                    </div>
                 </div>
             </div>
-
-            <!-- Investment Calculator -->
-            <div class="calculator-container">
-                <h3 style="color:var(--primary-red); margin-bottom: 25px; text-align:center;">Investment Calculator</h3>
-                <div class="calc-group">
-                    <label><i class="fa-solid fa-piggy-bank"></i> Initial Investment: R<span id="invAmountVal">10000</span></label>
-                    <input type="range" id="invAmount" min="1000" max="100000" step="1000" value="10000">
-                </div>
-                <div class="calc-group">
-                    <label><i class="fa-solid fa-hourglass-half"></i> Period: <span id="invTermVal">12</span> Months</label>
-                    <input type="range" id="invTerm" min="6" max="60" step="6" value="12">
-                </div>
-                <div class="investment-options">
-                    <label><input type="radio" name="invInterest" id="invNone" value="none" checked> No interest (capital preservation)</label>
-                    <label><input type="radio" name="invInterest" id="invMonthly4" value="monthly4"> 4% Monthly compound</label>
-                    <label><input type="radio" name="invInterest" id="invAnnual7_5" value="annual7.5"> 7.5% Per annum (monthly compound)</label>
-                </div>
-                <div class="calc-result">
-                    <p>Estimated Total Return</p>
-                    <h3 id="invResult">R0.00</h3>
-                    <p style="font-size: 0.8rem; color: #666; margin-bottom: 20px;">*Select interest type above.</p>
-                    <a href="investment-form.html" class="btn btn-red" style="width:100%">Invest Today</a>
+            <!-- calculator card -->
+            <div class="bg-white rounded-3xl p-7 card-soft border border-gray-100">
+                <h3 class="text-xl font-bold mb-6 text-center text-gray-800">what you’ll pay</h3>
+                <div class="space-y-7">
+                    <div>
+                        <div class="flex justify-between mb-2 text-sm font-medium text-gray-700">
+                            <label>Loan amount</label>
+                            <span class="text-xl font-bold text-red-700" id="amountDisplay">R 2 500</span>
+                        </div>
+                        <input type="range" id="amountSlider" min="1000" max="5000" step="100" value="2500" class="w-full h-2 bg-gray-200 rounded-lg cursor-pointer">
+                        <div class="flex justify-between text-xs text-gray-400 mt-1"><span>R1,000</span><span>R5,000</span></div>
+                    </div>
+                    <div class="flex justify-between items-center py-2 px-3 bg-gray-50 rounded-xl">
+                        <span class="text-sm font-medium text-gray-700">Repayment term</span>
+                        <span class="font-bold text-red-700 bg-white px-4 py-2 rounded-full text-sm shadow-sm">1 month fixed</span>
+                    </div>
+                    <div class="bg-red-50/80 rounded-2xl p-5 text-center border border-red-100">
+                        <p class="text-xs font-semibold text-red-800 uppercase tracking-wide">one-off payment</p>
+                        <div class="text-3xl md:text-4xl font-extrabold text-gray-900" id="monthlyResult">R 2 875</div>
+                        <p class="text-xs text-red-700 mt-2">includes interest & service fee • no monthly installments</p>
+                    </div>
+                    <a href="#contact" class="block w-full btn-primary py-4 rounded-full text-white font-bold text-base uppercase tracking-wide text-center">Apply now – 2 min</a>
+                    <p class="text-center text-xs text-gray-400 flex items-center justify-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        256-bit encrypted
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </header>
 
-<!-- CONTACT SECTION (updated with image details) -->
-<section id="contact">
-    <div class="container">
-        <h2 class="section-title">Contact Us</h2>
-        <div class="contact-wrapper">
-            <div class="contact-info-box">
-                <h3>Get In Touch</h3>
-                <div class="contact-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <p><strong>Physical Address:</strong> Justicia Trust Stand No.195, Bushbuckridge Municipality, Mpumalanga Province</p>
+    <!-- ===== HOW IT WORKS ===== -->
+    <section id="how-it-works" class="section-padding px-5 bg-white">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-gray-900">simple steps, one month</h2>
+            <div class="relative grid md:grid-cols-4 gap-8">
+                <div class="hidden md:block step-line"></div>
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-white rounded-2xl card-soft border border-red-100 flex items-center justify-center mb-4">
+                        <svg class="w-7 h-7 text-red-700" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
+                    </div>
+                    <h4 class="text-lg font-bold">1. click apply</h4>
+                    <p class="text-gray-500 text-sm max-w-[200px]">Start our secure 2‑minute form – no branch visit needed.</p>
                 </div>
-                <div class="contact-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <p><strong>Postal:</strong> P.O. Box 3212, Justicia, 1289</p>
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-white rounded-2xl card-soft border border-red-100 flex items-center justify-center mb-4">
+                        <svg class="w-7 h-7 text-red-700" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    </div>
+                    <h4 class="text-lg font-bold">2. upload documents</h4>
+                    <p class="text-gray-500 text-sm max-w-[200px]">ID, latest payslip & 3 months bank statement – all via secure upload.</p>
                 </div>
-                <div class="contact-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <p><strong>Call us now:</strong> 013 007 9085 / 067 407 7339</p>
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-white rounded-2xl card-soft border border-red-100 flex items-center justify-center mb-4">
+                        <svg class="w-7 h-7 text-red-700" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h4 class="text-lg font-bold">3. submit & verify</h4>
+                    <p class="text-gray-500 text-sm max-w-[200px]">We review within hours – a real consultant checks your application.</p>
                 </div>
-                <div class="contact-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <p><strong>Email:</strong> info@lnlinvestments.co.za</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fa-solid fa-clock"></i>
-                    <p>Mon - Fri: 08:00 - 17:00<br>Sat: 09:00 - 13:00</p>
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-white rounded-2xl card-soft border border-red-100 flex items-center justify-center mb-4">
+                        <svg class="w-7 h-7 text-red-700" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    </div>
+                    <h4 class="text-lg font-bold">4. receive payout</h4>
+                    <p class="text-gray-500 text-sm max-w-[200px]">Approved? Money is EFT’d to your account the same day.</p>
                 </div>
             </div>
-            <div class="contact-form">
-                <form action="#">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="text" placeholder="Subject" required>
-                    <textarea rows="5" placeholder="Your Message..."></textarea>
-                    <button type="submit" class="btn btn-red" style="width: 100%;">Send Message</button>
+        </div>
+    </section>
+
+    <!-- ===== WHY US ===== -->
+    <section id="why-us" class="section-padding px-5 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center lg:text-left">why clients choose us</h2>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="relative">
+                    <div class="timeline-line"></div>
+                    <div class="space-y-10">
+                        <div class="relative pl-12">
+                            <span class="absolute left-0 top-0 w-9 h-9 bg-red-700 rounded-full flex items-center justify-center text-white text-sm font-bold z-10">1</span>
+                            <div class="bg-white p-5 rounded-xl card-soft border border-gray-100">
+                                <h4 class="font-bold text-base">apply in minutes</h4>
+                                <p class="text-gray-500 text-xs">no branches, no queues</p>
+                            </div>
+                        </div>
+                        <div class="relative pl-12">
+                            <span class="absolute left-0 top-0 w-9 h-9 bg-red-700 rounded-full flex items-center justify-center text-white text-sm font-bold z-10">2</span>
+                            <div class="bg-white p-5 rounded-xl card-soft border border-gray-100">
+                                <h4 class="font-bold text-base">personal check</h4>
+                                <p class="text-gray-500 text-xs">real people, not just AI</p>
+                            </div>
+                        </div>
+                        <div class="relative pl-12">
+                            <span class="absolute left-0 top-0 w-9 h-9 bg-red-700 rounded-full flex items-center justify-center text-white text-sm font-bold z-10">3</span>
+                            <div class="bg-white p-5 rounded-xl card-soft border border-gray-100">
+                                <h4 class="font-bold text-base">paid same day</h4>
+                                <p class="text-gray-500 text-xs">once verified</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="bg-white p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center">
+                        <div class="w-11 h-11 bg-red-50 rounded-xl flex items-center justify-center text-red-700 mb-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <h5 class="font-bold text-sm">physical office</h5>
+                        <p class="text-xs text-gray-500 mt-1">Bushbuckridge HQ</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center">
+                        <div class="w-11 h-11 bg-red-50 rounded-xl flex items-center justify-center text-red-700 mb-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        </div>
+                        <h5 class="font-bold text-sm">dedicated consultants</h5>
+                        <p class="text-xs text-gray-500 mt-1">we guide you</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center">
+                        <div class="w-11 h-11 bg-red-50 rounded-xl flex items-center justify-center text-red-700 mb-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <h5 class="font-bold text-sm">no hidden fees</h5>
+                        <p class="text-xs text-gray-500 mt-1">everything upfront</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center">
+                        <div class="w-11 h-11 bg-red-50 rounded-xl flex items-center justify-center text-red-700 mb-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h5 class="font-bold text-sm">local impact</h5>
+                        <p class="text-xs text-gray-500 mt-1">investing in our community</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== IMPACT STATS ===== -->
+    <section class="py-12 md:py-16 px-5 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-10">growing stronger together</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-extrabold text-red-700 mb-2">500+</div>
+                    <p class="text-lg font-semibold text-gray-800">loans disbursed</p>
+                    <p class="text-sm text-gray-500 mt-1">to local families and entrepreneurs</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-extrabold text-red-700 mb-2">2 years</div>
+                    <p class="text-lg font-semibold text-gray-800">of excellence</p>
+                    <p class="text-sm text-gray-500 mt-1">serving Bushbuckridge with pride</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-extrabold text-red-700 mb-2">100%</div>
+                    <p class="text-lg font-semibold text-gray-800">local impact</p>
+                    <p class="text-sm text-gray-500 mt-1">every rand stays in the community</p>
+                </div>
+            </div>
+            <p class="text-lg font-bold text-gray-700 mt-8 max-w-2xl mx-auto">"We don't just lend — we build partnerships that last."</p>
+        </div>
+    </section>
+
+    <!-- ===== NEWS ===== -->
+    <section id="news" class="py-12 md:py-16 px-5 bg-red-700 text-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-center">latest news</h2>
+            <p class="text-center text-red-100 mb-10 text-sm">updates from L&L Investments</p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Card 1: 2nd Anniversary -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col">
+                    <div class="h-40 bg-red-50 flex items-center justify-center text-red-700 text-6xl font-extrabold">2</div>
+                    <div class="p-5 text-gray-900 flex-1">
+                        <h4 class="font-extrabold text-base">two years of growth</h4>
+                        <p class="text-gray-600 text-xs my-2 leading-relaxed">
+                            Two years ago L&L started offering loans and investment services. Today we celebrate two years of excellence, built on strong partnerships with our customers. We’ve grown tremendously – and it’s all thanks to you and the community. Happy business anniversary to our L&L family.
+                        </p>
+                        <span class="text-red-700 text-sm font-bold flex items-center gap-1">read more <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+                    </div>
+                </div>
+                <!-- Card 2: Investment Summit 30 Sept -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col">
+                    <div class="h-40 bg-gray-200"><img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&q=60&w=600" alt="summit" class="w-full h-full object-cover"></div>
+                    <div class="p-5 text-gray-900 flex-1">
+                        <h4 class="font-extrabold text-base">investment summit 2023</h4>
+                        <p class="text-gray-600 text-xs my-2 leading-relaxed">
+                            Hey L&L family, don’t miss our Investment Summit on 30 September 2023. Links to view the event will be shared on our page soon. Stay tuned for a deep dive into financial growth.
+                        </p>
+                        <span class="text-red-700 text-sm font-bold flex items-center gap-1">read more <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+                    </div>
+                </div>
+                <!-- Card 3: New website launch -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col">
+                    <div class="h-40 bg-gray-200"><img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&q=60&w=600" alt="new website" class="w-full h-full object-cover"></div>
+                    <div class="p-5 text-gray-900 flex-1">
+                        <h4 class="font-extrabold text-base">brand new website launched</h4>
+                        <p class="text-gray-600 text-xs my-2 leading-relaxed">
+                            We’re proud to introduce our completely redesigned website. Faster, clearer, and easier to use — now you can apply for a loan, check your status, and explore our services all in one place. Experience the new digital home of L&L.
+                        </p>
+                        <span class="text-red-700 text-sm font-bold flex items-center gap-1">visit website <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OTHER SERVICES (Investment, Funeral, Debt Collection) ===== -->
+    <section id="other-services" class="py-12 md:py-16 px-5 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-10">more ways we serve you</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Investment -->
+                <div class="bg-white p-8 rounded-3xl card-soft border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-700 mb-5">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">investment solutions</h3>
+                    <p class="text-sm text-gray-600">Grow your wealth with our tailored investment products, designed for individuals and small businesses.</p>
+                    <a href="#" class="mt-4 text-red-700 font-semibold text-sm flex items-center gap-1">learn more <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+                </div>
+                <!-- Funeral -->
+                <div class="bg-white p-8 rounded-3xl card-soft border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-700 mb-5">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">funeral cover</h3>
+                    <p class="text-sm text-gray-600">Dignified and affordable funeral plans that ensure your loved ones are taken care of when it matters most.</p>
+                    <a href="#" class="mt-4 text-red-700 font-semibold text-sm flex items-center gap-1">learn more <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+                </div>
+                <!-- Debt Collection -->
+                <div class="bg-white p-8 rounded-3xl card-soft border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-700 mb-5">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">debt collection</h3>
+                    <p class="text-sm text-gray-600">Ethical and effective debt recovery services for businesses, helping you maintain cash flow while preserving relationships.</p>
+                    <a href="#" class="mt-4 text-red-700 font-semibold text-sm flex items-center gap-1">learn more <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="py-12 md:py-16 px-5 bg-white">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-10 text-center">questions? we’re open</h2>
+            <div class="space-y-3">
+                <details class="group bg-gray-50 rounded-xl">
+                    <summary class="flex justify-between items-center p-5 cursor-pointer font-semibold text-gray-800">
+                        How fast is approval?
+                        <svg class="w-5 h-5 text-red-700 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600">Typically 2‑24 hours after documents are received.</div>
+                </details>
+                <details class="group bg-gray-50 rounded-xl">
+                    <summary class="flex justify-between items-center p-5 cursor-pointer font-semibold text-gray-800">
+                        What do I need to apply?
+                        <svg class="w-5 h-5 text-red-700 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600">Valid SA ID, latest payslip, 3 months bank statement.</div>
+                </details>
+                <details class="group bg-gray-50 rounded-xl">
+                    <summary class="flex justify-between items-center p-5 cursor-pointer font-semibold text-gray-800">
+                        Any early repayment penalty?
+                        <svg class="w-5 h-5 text-red-700 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600">No penalties. Pay anytime – we only charge interest for days used.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="py-12 md:py-16 px-5 bg-gray-50">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
+            <div class="space-y-6">
+                <h2 class="text-3xl md:text-4xl font-extrabold">real people,<br>real support.</h2>
+                <div class="space-y-5">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-9 h-9 bg-red-100 rounded-full flex items-center justify-center text-red-700 shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <div><p class="font-bold text-sm">Visit</p><p class="text-sm text-gray-600">Justicia Trust Stand 195, Bushbuckridge</p></div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-9 h-9 bg-red-100 rounded-full flex items-center justify-center text-red-700 shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        </div>
+                        <div><p class="font-bold text-sm">Call / WhatsApp</p><p class="text-sm text-gray-600">064 611 6805</p></div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-9 h-9 bg-red-100 rounded-full flex items-center justify-center text-red-700 shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <div><p class="font-bold text-sm">Email</p><p class="text-sm text-gray-600">info@lnlinvestments.co.za</p></div>
+                    </div>
+                </div>
+                <div class="w-full h-56 bg-gray-300 rounded-2xl overflow-hidden shadow-inner">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14486.29959600845!2d31.25!3d-24.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec2f0b740523e53%3A0xc487a5538e146740!2sBushbuckridge!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza" class="w-full h-full grayscale hover:grayscale-0 transition" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-3xl card-soft">
+                <h3 class="text-xl font-bold mb-5">request a callback</h3>
+                <form class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <input type="text" placeholder="full name" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:border-red-700 outline-none">
+                        <input type="tel" placeholder="phone" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:border-red-700 outline-none">
+                    </div>
+                    <input type="number" placeholder="loan amount (R)" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:border-red-700 outline-none">
+                    <textarea placeholder="message (optional)" rows="3" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:border-red-700 outline-none"></textarea>
+                    <button type="submit" class="w-full btn-primary py-4 rounded-full text-white font-bold text-sm uppercase tracking-wide">request callback</button>
                 </form>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-about">
-                <div class="footer-logo">L&L <span>Investments</span></div>
-                <p>We provide responsible lending, smart investments, professional debt recovery, and dignified funeral cover solutions. Built on integrity and transparency.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+    <!-- ===== DETAILED FOOTER ===== -->
+    <footer class="bg-gray-900 text-gray-400 pt-12 pb-6 px-5">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-red-700 rounded flex items-center justify-center text-white font-bold text-sm">L&L</div>
+                        <span class="text-white font-bold">investments</span>
+                    </div>
+                    <p class="text-xs leading-relaxed">NCR registered micro lender. Fast, transparent loans for Bushbuckridge and surrounding areas.</p>
+                </div>
+                <div>
+                    <h6 class="text-white text-sm font-bold mb-4">quick links</h6>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#how-it-works" class="hover:text-white transition">How it works</a></li>
+                        <li><a href="#why-us" class="hover:text-white transition">Why us</a></li>
+                        <li><a href="#news" class="hover:text-white transition">News</a></li>
+                        <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="#other-services" class="hover:text-white transition">Other services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="text-white text-sm font-bold mb-4">legal</h6>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#" class="hover:text-white transition">Privacy policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of use</a></li>
+                        <li><a href="#" class="hover:text-white transition">NCR compliance</a></li>
+                        <li><a href="#" class="hover:text-white transition">POPIA</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="text-white text-sm font-bold mb-4">trusted by</h6>
+                    <div class="flex flex-wrap gap-3 items-center">
+                        <img src="https://logo.clearbit.com/ncr.com" alt="NCR" class="h-8 w-auto bg-white rounded px-2 py-1" onerror="this.onerror=null; this.src='https://placehold.co/60x30/333/fff?text=NCR'">
+                        <img src="https://logo.clearbit.com/businessleadership.org.za" alt="BUSA" class="h-8 w-auto bg-white rounded px-2 py-1" onerror="this.onerror=null; this.src='https://placehold.co/60x30/333/fff?text=BUSA'">
+                        <img src="https://logo.clearbit.com/microfinanceassociation.co.za" alt="MicroFinance SA" class="h-8 w-auto bg-white rounded px-2 py-1" onerror="this.onerror=null; this.src='https://placehold.co/60x30/333/fff?text=MFS'">
+                        <img src="https://logo.clearbit.com/mpumalanga.gov.za" alt="Mpumalanga" class="h-8 w-auto bg-white rounded px-2 py-1" onerror="this.onerror=null; this.src='https://placehold.co/60x30/333/fff?text=MPU'">
+                    </div>
+                    <p class="text-xs text-gray-500 mt-4">2025 · members of MICROFINANCE SA</p>
                 </div>
             </div>
-            <div>
-                <h4 class="footer-title">Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#loan">Loan</a></li>
-                    <li><a href="#debt">Debt Recovery</a></li>
-                    <li><a href="#investment">Investment</a></li>
-                    <li><a href="#funeral">Funeral Cover</a></li>
-                    <li><a href="#calculators">Financial Tools</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="footer-title">Our Services</h4>
-                <ul class="footer-links">
-                    <li><a href="loan-form.html">Micro Loans</a></li>
-                    <li><a href="investment-form.html">Business Investments</a></li>
-                    <li><a href="debt-form.html">Debt Mediation</a></li>
-                    <li><a href="funeral-form.html">Premium Funeral Cover</a></li>
-                    <li><a href="#contact">Financial Consulting</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="footer-title">Head Office</h4>
-                <div class="footer-contact-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span>Stand 195, Justicia Trust, Bushbuckridge</span>
-                </div>
-                <div class="footer-contact-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <span>013 007 9085</span>
-                </div>
-                <div class="footer-contact-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>info@lnlinvestments.co.za</span>
-                </div>
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-xs flex flex-col md:flex-row justify-between items-center">
+                <p>© 2025 L&L Investments. All rights reserved.</p>
+                <p class="mt-2 md:mt-0 flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    serving Bushbuckridge since 2012
+                </p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2024 L&L Investments and Loans. All rights reserved. | <a href="#" style="color:#777; text-decoration:none;">Privacy Policy</a> | <a href="#" style="color:#777; text-decoration:none;">Terms of Service</a></p>
-            <p style="margin-top: 10px; font-size: 0.75rem;">Registered Credit Provider: NCRCP0000 | FSP License: 00000</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-<div id="chatbot-trigger"><i class="fa-solid fa-message"></i></div>
+    <!-- scripts -->
+    <script>
+        // loader fade-out
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
 
-<div id="chat-window">
-    <div class="chat-header">
-        <span>L&L AI Support</span>
-        <i class="fa-solid fa-chevron-down" style="cursor: pointer;" onclick="document.getElementById('chat-window').style.display='none'"></i>
-    </div>
-    <div class="chat-messages" id="chat-messages">
-        <div class="message bot-msg">
-            <i class="fa-solid fa-robot"></i> Hello 👋 I’m L&L Smart Assistant.<br><br>
-            I can help with:<br>
-            • Loan requirements<br>
-            • Interest rates<br>
-            • Funeral plans<br>
-            • Debt recovery
-        </div>
-    </div>
-    <form class="chat-input" onsubmit="handleChat(event)">
-        <input type="text" id="chat-input-field" placeholder="Type your question...">
-        <button type="submit" style="border:none; background:none; color:var(--primary-red); cursor:pointer;"><i class="fa-solid fa-paper-plane"></i></button>
-    </form>
-</div>
+        const amountSlider = document.getElementById('amountSlider');
+        const amountDisplay = document.getElementById('amountDisplay');
+        const monthlyResult = document.getElementById('monthlyResult');
+        function updateCalc() { let amt = parseInt(amountSlider.value); amountDisplay.innerText = 'R ' + amt.toLocaleString(); monthlyResult.innerText = 'R ' + Math.round(amt * 1.15).toLocaleString(); }
+        amountSlider.addEventListener('input', updateCalc); updateCalc();
 
-<script>
-    // Navigation
-    const hamburger=document.getElementById('hamburger');
-    const navLinks=document.getElementById('nav-links');
-    hamburger.onclick=()=>navLinks.classList.toggle('active');
-
-    // Loan calculator
-    const amountSlider=document.getElementById('loanAmount');
-    const termSlider=document.getElementById('loanTerm');
-    const loanResult=document.getElementById('loanResult');
-    function updateLoan(){
-        let amount=parseFloat(amountSlider.value);
-        let term=parseFloat(termSlider.value);
-        document.getElementById('loanAmountVal').innerText=amount;
-        document.getElementById('loanTermVal').innerText=term;
-        let repayment=(amount+(amount*0.10))/term;
-        loanResult.innerText="R"+repayment.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    }
-    amountSlider.oninput=updateLoan;
-    termSlider.oninput=updateLoan;
-
-    // Investment calculator
-    const invAmountSlider=document.getElementById('invAmount');
-    const invTermSlider=document.getElementById('invTerm');
-    const invResult=document.getElementById('invResult');
-    const invNone = document.getElementById('invNone');
-    const invMonthly4 = document.getElementById('invMonthly4');
-    const invAnnual7_5 = document.getElementById('invAnnual7_5');
-
-    function updateInvestment(){
-        let principal=parseFloat(invAmountSlider.value);
-        let months=parseFloat(invTermSlider.value);
-        document.getElementById('invAmountVal').innerText=principal;
-        document.getElementById('invTermVal').innerText=months;
-
-        let total = principal;
-        if (invNone.checked) {
-            total = principal;
-        } else if (invMonthly4.checked) {
-            let monthlyRate = 0.04;
-            total = principal * Math.pow((1 + monthlyRate), months);
-        } else if (invAnnual7_5.checked) {
-            let monthlyRate = 0.075 / 12;
-            total = principal * Math.pow((1 + monthlyRate), months);
-        }
-        invResult.innerText="R"+total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    }
-
-    invAmountSlider.oninput=updateInvestment;
-    invTermSlider.oninput=updateInvestment;
-    invNone.onchange=updateInvestment;
-    invMonthly4.onchange=updateInvestment;
-    invAnnual7_5.onchange=updateInvestment;
-
-    updateLoan();
-    updateInvestment();
-
-    // CHATBOT - SUPER SMART with image-based info
-    const trigger=document.getElementById('chatbot-trigger');
-    const chatWin=document.getElementById('chat-window');
-    const chatMsgs=document.getElementById('chat-messages');
-    trigger.onclick=()=>chatWin.style.display= chatWin.style.display==='flex'?'none':'flex';
-
-    function handleChat(e){
-        e.preventDefault();
-        let input=document.getElementById('chat-input-field');
-        let text=input.value.trim();
-        if(!text)return;
-        addMessage(text,'user-msg');
-        input.value='';
-        setTimeout(()=>{
-            addMessage(generateAIResponse(text),'bot-msg');
-        },500);
-    }
-
-    function generateAIResponse(msg){
-        msg = msg.toLowerCase();
-
-        // GREETINGS
-        if (/\b(hi|hello|hey|good morning|good afternoon|good evening|howdy|greetings)\b/.test(msg)) {
-            return "Hello 👋 Welcome to L&L Investments. How may I assist you today?";
-        }
-
-        // LOAN related (any mention of loan/loans/borrow/funding)
-        if (/\b(loan|loans|borrow|fund|credit)\b/.test(msg)) {
-            // Check for requirements / documents
-            if (/\b(require|need|document|what do i need|paper|bank statement|payslip|bank card)\b/.test(msg)) {
-                return "To apply for a loan, you'll need:\n• 3 months bank statement\n• Your bank card\n• Latest payslip\n\nOur standard loan amount is R1,000 to R5,000 with 1 month to pay. For larger amounts (up to R50,000) and longer terms, please ask our consultants.";
-            }
-            // Check for interest rate
-            if (/\b(interest|rate|percent|apr|cost)\b/.test(msg)) {
-                return "Our standard loan interest rate is 10% fixed. For the R1,000–R5,000 loan (1 month term), the total repayment is the loan amount + 10% interest. Larger loans have flexible terms.";
-            }
-            // Check for amount / how much
-            if (/\b(how much|maximum|minimum|amount|can i get|borrow)\b/.test(msg)) {
-                return "We offer loans from R1,000 to R5,000 with a 1-month repayment period. For larger loans (up to R50,000) with longer terms, we can tailor a solution. Contact us for a personalized quote.";
-            }
-            // Check for repayment period / term
-            if (/\b(repay|term|months|pay back|duration)\b/.test(msg)) {
-                return "Our specific micro-loan product is for R1,000–R5,000 and must be repaid in 1 month. However, we also offer custom loans with terms from 1 to 24 months. Use our calculator or ask for details.";
-            }
-            // Generic loan response
-            return "We offer personal loans from R1,000 to R5,000 (1 month to pay) as well as custom loans up to R50,000 with flexible terms. Documents required: 3 months bank statement, bank card, and payslip. Would you like to know more about interest rates or repayment?";
-        }
-
-        // FUNERAL COVER
-        if (/\b(funeral|cover|burial|death|estate|plan)\b/.test(msg)) {
-            if (/\b(basic|price|cost|premium|family)\b/.test(msg)) {
-                return "Our funeral plans:\n• Basic (R75/pm): R10,000 cover, single member\n• Family (R150/pm): R25,000 cover, main + 5 dependents, airtime & grocery benefit\n• Premium (R280/pm): R50,000 cover, main + 9 dependents, catering & tombstone benefit.\nAll include 24-hour claim processing.";
-            }
-            return "We have three funeral cover options: Basic (R75), Family (R150), and Premium (R280). Each offers different cover amounts and benefits. Would you like details on a specific plan?";
-        }
-
-        // DEBT RECOVERY
-        if (/\b(debt|recovery|collect|owe|collector|mediation)\b/.test(msg)) {
-            return "Our debt recovery process involves 3 steps: Assessment, Negotiation, and Recovery. We work on a success-based fee. Would you like to request a consultation?";
-        }
-
-        // INVESTMENT
-        if (/\b(invest|saving|return|growth|compound|interest.*investment)\b/.test(msg)) {
-            return "We offer three investment plans:\n• No interest (capital preservation)\n• 4% monthly compound\n• 7.5% per annum (monthly compound).\nTry our investment calculator above to see projected returns!";
-        }
-
-        // CONTACT / ADDRESS / PHONE
-        if (/\b(contact|phone|cell|number|email|address|location|where are you)\b/.test(msg)) {
-            return "You can reach us at:\n📞 013 007 9085 / 067 407 7339\n📧 info@lnlinvestments.co.za\n📍 Physical: Justicia Trust Stand No.195, Bushbuckridge Municipality, Mpumalanga\n📮 Postal: P.O. Box 3212, Justicia, 1289";
-        }
-
-        // HOURS
-        if (/\b(hours|open|time|work|when)\b/.test(msg)) {
-            return "Our office hours are:\nMon-Fri: 08:00 - 17:00\nSat: 09:00 - 13:00\nWe're closed on Sundays and public holidays.";
-        }
-
-        // DEFAULT
-        return "I can assist with loans, funeral plans, debt recovery, investments, or contact details. Could you please specify your question?";
-    }
-
-    function addMessage(text,className){
-        let div=document.createElement('div');
-        div.className='message '+className;
-        div.innerText=text;
-        chatMsgs.appendChild(div);
-        chatMsgs.scrollTop=chatMsgs.scrollHeight;
-    }
-</script>
-
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let isOpen = false;
+        menuToggle.addEventListener('click', () => {
+            if (!isOpen) { mobileMenu.style.maxHeight = '300px'; mobileMenu.style.opacity = '1'; isOpen = true; }
+            else { mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; isOpen = false; }
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; isOpen = false; }));
+        window.addEventListener('resize', () => { if (window.innerWidth >= 768) { mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; isOpen = false; } });
+    </script>
 </body>
 </html>
